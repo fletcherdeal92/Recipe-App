@@ -15,7 +15,7 @@ struct RecipeListView: View {
     var body: some View {
         
         
-        
+        // MARK: Navigation
         NavigationView {
             List(model.recipes) { r in
                 
