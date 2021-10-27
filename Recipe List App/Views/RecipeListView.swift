@@ -39,7 +39,9 @@ struct RecipeListView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+    static let myEnvObj = RecipeModel()
     static var previews: some View {
         RecipeListView()
+            .environmentObject(myEnvObj)
     }
 }
