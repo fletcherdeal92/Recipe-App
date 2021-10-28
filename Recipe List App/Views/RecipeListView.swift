@@ -15,25 +15,38 @@ struct RecipeListView: View {
         
         // MARK: Navigation
         NavigationView {
-            List(model.recipes) { r in
-                
-                NavigationLink {
-                    RecipeDetailView(recipe: r)
-                } label: {
-                    HStack {
-                        Image(r.image)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 50, height: 50, alignment: .center)
-                            .clipped()
-                            .cornerRadius(7)
-                        Text(r.name)
-                    }                }
-
-                
+            
+            VStack(alignment: .leading) {
+                Text("All Recipes")
+                    .bold()
+                    .padding(.top, 40)
+                    .font(.largeTitle)
+                ScrollView {
+                    LazyVStack (alignment: .leading) {
+                        ForEach (model.recipes) { r in
+                            
+                            NavigationLink {
+                                RecipeDetailView(recipe: r)
+                            } label: {
+                                HStack {
+                                    Image(r.image)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 50, height: 50, alignment: .center)
+                                        .clipped()
+                                        .cornerRadius(7)
+                                    Text(r.name)
+                                        .foregroundColor(.black)
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+                .navigationBarHidden(true)
             }
-            .listStyle(PlainListStyle())
-            .navigationTitle("All Recipes")
+            .padding(.leading)
+            
         }
     }
 }
